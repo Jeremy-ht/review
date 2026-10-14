@@ -1,0 +1,12 @@
+# 构建产物：一条命令可重新生成（python generator/build.py），不进仓库
+site/
+
+# 凭证与本机状态，绝不进仓库
+upload/config.json
+upload/manifest.json
+
+# 爬虫日志
+data/crawl_log.txt
+
+__pycache__/
+*.pyc

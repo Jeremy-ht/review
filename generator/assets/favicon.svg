@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="4" y="4" width="56" height="56" rx="13" fill="#b42318"/>
+  <rect x="8.5" y="8.5" width="47" height="47" rx="10" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="1.5"/>
+  <text x="32" y="43" text-anchor="middle" font-family="Georgia, 'Noto Serif SC', 'SimSun', serif" font-size="30" font-weight="700" fill="#ffffff">鳄</text>
+</svg>
