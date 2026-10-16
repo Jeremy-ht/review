@@ -67,8 +67,17 @@ class Uploader:
                 headers["Authorization"] = f"Bearer {cfg['token']}"
         self.s.headers.update(headers)
         if self.mode == "s3":
-            import boto3  # noqa
-            self.s3 = boto3.client("s3")
+            import boto3
+            from botocore.config import Config
+            # 自托管 S3 兼容存储（RustFS/MinIO）必须显式给 endpoint + path 风格寻址
+            self.s3 = boto3.client(
+                "s3",
+                endpoint_url=cfg.get("endpoint") or None,
+                config=Config(signature_version="s3v4", s3={"addressing_style": "path"}),
+                region_name=cfg.get("s3_region", "us-east-1"),
+                aws_access_key_id=cfg.get("access_key") or None,
+                aws_secret_access_key=cfg.get("secret_key") or None,
+            )
             self.bucket = cfg["s3_bucket"]
             self.prefix = cfg.get("s3_prefix", "").lstrip("/")
 

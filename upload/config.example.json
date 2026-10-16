@@ -1,24 +1,21 @@
 {
-  "type": "webdav",
-  "endpoint": "https://your-file-server.com/dav/gator-images/",
-  "public_base_url": "https://your-file-server.com/files/gator-images/",
-  "username": "",
-  "password": "",
-  "token": "",
-  "headers": {},
+  "type": "s3",
+  "endpoint": "http://your-object-store:8031",
+  "public_base_url": "http://your-object-store:8031/your-bucket/gator",
+  "access_key": "",
+  "secret_key": "",
+  "s3_bucket": "your-bucket",
+  "s3_prefix": "gator/",
+  "s3_region": "us-east-1",
   "concurrency": 4,
   "auto_switch_site_to_remote": true,
   "_说明": {
     "type": "webdav | http | s3 三选一",
-    "endpoint": "webdav: 集合目录URL(带尾斜杠)；http: 接收PUT的上传基址；s3: 不用此字段",
+    "endpoint": "s3 模式必填（自托管 RustFS/MinIO 的 API 地址）；webdav 为集合目录URL；http 为接收PUT的上传基址",
     "public_base_url": "外网可访问的图片基址(带尾斜杠)，构建后文章将引用 <public_base_url>/<slug>/<file>",
-    "token": "http 模式可选，作为 Authorization: Bearer <token>",
-    "headers": "附加请求头，如 {\"X-Custom-Auth\": \"xxx\"}",
-    "bucket/前缀": "s3 模式在下方 s3_bucket / s3_prefix 配置",
-    "s3_bucket": "仅 s3 模式",
-    "s3_prefix": "仅 s3 模式，如 gator-images/",
-    "auto_switch_site_to_remote": "上传成功后自动把 site.config.json 的 image_base_url 切到 public_base_url，重新 build 即生效"
-  },
-  "s3_bucket": "",
-  "s3_prefix": "gator-images/"
+    "access_key/secret_key": "s3 模式的访问密钥；aws 公有云可不填（走环境变量）",
+    "s3_bucket/s3_prefix": "s3 模式必填，prefix 建议按项目分层如 gator/",
+    "s3_region": "自托管一般 us-east-1 即可",
+    "auto_switch_site_to_remote": "上传成功后自动把 site.config.json 的 image_base_url 切到 public_base_url，重新 build 生效"
+  }
 }

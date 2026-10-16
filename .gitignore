@@ -8,5 +8,8 @@ upload/manifest.json
 # 爬虫日志
 data/crawl_log.txt
 
+# 与本项目无关的本地资料（缠论学习包，内含独立 git 仓库）
+chuanlun/
+
 __pycache__/
 *.pyc

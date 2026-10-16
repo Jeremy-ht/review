@@ -55,7 +55,7 @@ cp upload/config.example.json upload/config.json
 |---|---|---|
 | `webdav` | NAS / Alist / 坚果云 / Nextcloud | `endpoint`（集合目录，带尾斜杠）、`username/password` |
 | `http` | 自建接收 PUT 的服务 | `endpoint`、可选 `token`（Bearer）与 `headers` |
-| `s3` | S3 / MinIO / OSS 兼容 | `s3_bucket`、`s3_prefix`（需 `pip install boto3`） |
+| `s3` | S3 / MinIO / RustFS / OSS 兼容 | `endpoint`（自托管必填）、`s3_bucket`、`s3_prefix`、`access_key/secret_key`（需 `pip install boto3`） |
 
 3. 上传（增量，自动跳过已传；`--dry` 预览 / `--force` 全量重传）：
 
